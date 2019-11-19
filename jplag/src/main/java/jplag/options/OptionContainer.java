@@ -39,7 +39,13 @@ public class OptionContainer extends Options {
 					Language tmp = (Language) cons.newInstance(ob);
 					this.language = tmp;
 					System.out.println("Language accepted ...................##########################################    " + tmp.name());
-					this.min_token_match = this.language.min_token_match();
+					if(this.min_token_match == 0) {
+						this.min_token_match = this.language.min_token_match();
+						this.min_token_match_set = false;
+					}else {
+						this.min_token_match_set = true;
+					}
+
 					this.suffixes = this.language.suffixes();
 					found1 = true;
 				} catch (ClassNotFoundException e) {
